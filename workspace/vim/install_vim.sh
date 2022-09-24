@@ -16,17 +16,17 @@ echo "[INFO]: Installing vim configs start"
 # Creating backup file if required (.vimrc and .vim dir already exist)
 if [ -e "${HOME}/.vimrc" ]; then
 	echo "Creating backup copy of existing .vimrc"
-	mv --force ${HOME}/.vimrc ${HOME}/.vimrc_backup
+	mv -f ${HOME}/.vimrc ${HOME}/.vimrc_backup
 	echo "Backup copy of .vimrc created: .vimrc_backup"
 fi
 
 if [ -d "${HOME}/.vim" ]; then
     echo "${HOME}/.vim dir alredy exist, creataing backup copy \".vim_backup\""
-    mv --force ${HOME}/.vim ${HOME}/.vim-backup
+    mv -f ${HOME}/.vim ${HOME}/.vim-backup
 fi
 
 # Create all requred vim configs files
-mkdir --parents ${vim_dir}
+mkdir -p ${vim_dir}
 touch ${vimrc_file}
 
 # Download plug from remote server
@@ -40,13 +40,13 @@ curl -fLo ${script_dir}/autoload/plug.vim --create-dirs \
 # Installation (Linking) all vim requred files
 
 # Link .vimrc
-ln --symbolic --force ${script_dir}/vimrc.vim ${HOME}/.vimrc
+ln -s -f ${script_dir}/vimrc.vim ${HOME}/.vimrc
 [ $? -ne 0 ] && exit_with_msg "Failed to install vim configs on system" 
 
 # Link autoload
 link_folders=(autoload plugin_configs)
 for link_folder in ${link_folders[*]}; do
-    ln --symbolic --directory --force ${script_dir}/${link_folder} ${HOME}/.vim
+    ln -s -F -f ${script_dir}/${link_folder} ${HOME}/.vim
     [ $? -ne 0 ] && exit_with_msg "Could not install .vim/${link_folder} on system"
 done
 
