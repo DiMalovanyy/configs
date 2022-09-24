@@ -2,23 +2,31 @@
 "			Personal VIM configuration
 " Author: Dmytro Malovanyi
 " Description: VimRC file for Vim text editor
-" Mapping: 
+" Mapping:
 "
 " ==========================================================================================
 "			Basic Configuration
 " ==========================================================================================
+" Set no compatible with vi compiler
+set nocompatible
+
+" TODO: Import color_scheme .vim file
+
 
 " Set Leader prefix
 let mapleader = ";"
 
-" Attemp to determine the type of file based on its name and possibly its 
+" Set 256 colour compatiable
+set t_Co=256
+
+" Attemp to determine the type of file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indention for each filetype,
 " and for plugins that are filetype specific.
 if has('filetype')
 	filetype indent plugin on
 endif
 
-" Enable syntax highlighting 
+" Enable syntax highlighting
 if has('syntax')
 	syntax on
 endif
@@ -37,12 +45,12 @@ if has('mouse')
 	endif
 endif
 
-" Enable line numeration 
+" Enable line numeration
 set number
 " Hide cursor while text typing
 set mousehide
 " Set more space for cmd messages box
-set cmdheight=2
+set cmdheight=1
 " Instead on errors on :e, :q, raise the confirmation window
 set confirm
 " Set UTF-8 encoding
@@ -87,4 +95,25 @@ set softtabstop=4
 " Map double ';;' to exit from Insert mode to normal
 inoremap <leader>; <ESC>
 
+" ---------------------------------------------------
+"       Plugins
+" ---------------------------------------------------
 
+call plug#begin()
+
+" VIM-Airline plugin to better bottom bar look and experience
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+
+" Git plugin
+Plug 'tpope/vim-fugitive'
+
+" Nerd Tree
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+
+call plug#end()
+
+" Load all configuration files
+runtime! plugin_configs/**/*.vim
