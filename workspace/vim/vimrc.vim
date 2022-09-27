@@ -113,6 +113,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
+" COC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 " Load all configuration files
