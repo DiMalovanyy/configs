@@ -7,11 +7,10 @@
 " ==========================================================================================
 "			Basic Configuration
 " ==========================================================================================
-" Set no compatible with vi compiler
+" Set no compatible with vi compiler set nocompatible
 set nocompatible
 
 " TODO: Import color_scheme .vim file
-
 
 " Set Leader prefix
 let mapleader = ";"
@@ -28,7 +27,7 @@ endif
 
 " Enable syntax highlighting
 if has('syntax')
-	syntax on
+    syntax on
 endif
 
 " In many terminals emulators mouse working fine. Thus enable it.
@@ -66,6 +65,8 @@ set linebreak
 " Set no backup (.swp) files
 set nobackup
 set nowritebackup
+" Enable backspace to work properly
+set backspace=indent,eol,start
 
 " ------------------------------------
 "  		Search settings
@@ -116,7 +117,13 @@ Plug 'ryanoasis/vim-devicons'
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Color scheme
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 " Load all configuration files
 runtime! plugin_configs/**/*.vim
+
+set background=dark
+colorscheme gruvbox
