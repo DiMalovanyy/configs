@@ -126,4 +126,8 @@ call plug#end()
 runtime! plugin_configs/**/*.vim
 
 set background=dark
-colorscheme gruvbox
+try
+    colorscheme gruvbox
+catch
+" gruvbox not yet installed
+endtry

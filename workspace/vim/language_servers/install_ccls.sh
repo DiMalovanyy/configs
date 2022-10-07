@@ -1,3 +1,5 @@
-#!/bin/bash
+#!/bin/bin/env zsh
+
+#TODO
 
 
