@@ -28,8 +28,15 @@ create_backups() {
 restore_backups() {
     # Restoring original vim files from backup copies
     if [ -e "${HOME}/.vimrc_backup" ]; then
-        #TODO:
-
+        log_info "Restore ${HOME}/.vimrc from backup file ${HOME}/.vimrc_backup"
+        mv -f ${HOME}/.vimrc_backup ${HOME}/.vimrc
+        [ $? -ne 0 ] && die_with_error "Could not resotre .vimrc from backup"
+    fi
+    if [ -d "${HOME}/.vim_backup" ]; then
+        log_info "Restore ${HOME}/.vim from backup file ${HOME}/.vim_backup"
+        rm -rf ${HOME}/.vim
+        mv -f ${HOME}/.vim_backup ${HOME}/.vim
+        [ $? -ne 0 ] && die_with_error "Could not restore .vim from backup"
     fi
 }
 
