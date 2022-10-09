@@ -1,0 +1,16 @@
+---
+# Used default LLVM style with 4 columns indentation
+BasedOnStyle: LLVM
+IndentWidth: 4
+---
+Languages: Cpp
+
+# Always break after an open bracket, if the parameters don’t fit on a single line.
+# Closing brackets will be placed on a new line.
+AlignAfterOpenBracket: BAS_BlockIndent
+
+#  Align array column and left justify the columns
+AlignArrayOfStructures: AIAS_Left
+
+# 
+

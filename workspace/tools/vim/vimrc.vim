@@ -2,7 +2,7 @@
 "			Personal VIM configuration
 " Author: Dmytro Malovanyi
 " Description: VimRC file for Vim text editor
-" Mapping:
+" Mapping: TODO:
 "
 " ==========================================================================================
 "			Basic Configuration

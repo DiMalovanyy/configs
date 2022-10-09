@@ -112,4 +112,3 @@ log_info "COC Language servers successfully installed"
 log_info "Vim Configs Successfully installed"
 
 exit 0
-
