@@ -1,0 +1,3 @@
+[submodule "workspace/tools/fuzzy/fzf"]
+	path = workspace/tools/fuzzy/fzf
+	url = https://github.com/junegunn/fzf

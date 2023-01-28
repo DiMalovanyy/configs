@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use v5.10;
+
+# External modules
+use FindBin;
+use Curses::UI;
+
+# Add current directory to @INC
+use lib $FindBin::Bin;
+

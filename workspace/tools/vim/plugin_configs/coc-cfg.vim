@@ -19,4 +19,8 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
+" Keybindings
+
+
+
 

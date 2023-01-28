@@ -96,6 +96,11 @@ set softtabstop=4
 " Map double ';;' to exit from Insert mode to normal
 inoremap <leader>; <ESC>
 
+
+" TODO: Move to language specific file !!!!
+set cindent
+set cinoptions=g0
+
 " ---------------------------------------------------
 "       Plugins
 " ---------------------------------------------------

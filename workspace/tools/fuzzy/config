@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+export FZF_TMUX=1
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse' 
+export FZF_TMUX_OPTS='-p80%,60%'
+
+export FZF_CTRL_T_OPTS="
+  --header='Ctrl-y - copy, Crtl-p toggle preview, Ctrl-e open in Vim'
+  --height 40%
+  --info=inline
+  --preview '([[ -f {} ]] && (bat -n --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+  --prompt='∼ ' --pointer='▶' --marker='✓'
+  --bind 'ctrl-p:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)+abort'
+  --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+  --bind 'ctrl-v:execute(code {+})'"
+
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
