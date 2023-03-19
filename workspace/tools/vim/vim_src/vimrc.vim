@@ -104,31 +104,7 @@ set cinoptions=g0
 " ---------------------------------------------------
 "       Plugins
 " ---------------------------------------------------
-
-call plug#begin()
-
-" VIM-Airline plugin to better bottom bar look and experience
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
-
-" Git plugin
-Plug 'tpope/vim-fugitive'
-
-" Nerd Tree
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-
-" COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Color scheme
-Plug 'morhetz/gruvbox'
-
-call plug#end()
-
-" Load all configuration files
-runtime! plugin_configs/**/*.vim
+runtime! plugin.vim
 
 set background=dark
 try

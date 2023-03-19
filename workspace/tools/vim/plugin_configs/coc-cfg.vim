@@ -20,7 +20,15 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 " Keybindings
+" GoTo code navigation
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gt <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
 
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
 
-
+" Fzf configuration
+nmap <silent> <Leader>di :CocFzfList diagnostics --current-buf<CR>
 

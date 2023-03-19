@@ -5,7 +5,8 @@ import_script utils/color
 import_script utils/error
 
 status_code=0
-script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+vim_config_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+vim_script_dir=${vim_config_dir}/vim_src
 
 configure_lighweighted=0
 
@@ -45,7 +46,7 @@ create_backups
 # Check if required minimum(lightweighted) installation
 if [ $# -ge 2 ]; then
     if [ "$1" == "light" ]; then
-        /bin/bash ${script_dir}/lightweighted/install_vim_light.sh
+        /bin/bash ${vim_script_dir}/light/install_vim_light.sh
         exit $?
     fi
 fi
@@ -59,19 +60,25 @@ log_info "Installing vim configs start"
 mkdir -p ${vim_dir}
 touch ${vimrc_file}
 
+
+# ========================================================
+# Download required files
+# ========================================================
+
 # Download plug from remote server
 which curl > /dev/null
 [ $? -ne 0 ] && die_with_error "Could not found curl in system"
 
-if [ ! -e ${script_dir}/autoload/plug.vim ]; then
+if [ ! -e ${vim_config_dir}/autoload/plug.vim ]; then
     log_info "Installing Plug from remote server"
-    curl -fLo ${script_dir}/autoload/plug.vim --create-dirs \
+    curl -fLo ${vim_config_dir}/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null
     [ $? -ne 0 ] && die_with_error "Could not download plug"
 else
     log_info "Plug already installed"
 fi
 
+# Download Node.js for COC
 which node > /dev/null
 if [ $? -ne 0 ]; then 
     log_info "Installing node js for COC competion"
@@ -81,27 +88,37 @@ else
     log_info "Node.js for COC already installed"
 fi
 
+# ========================================================
 # Installation (Linking) all vim requred files
+# ========================================================
 
 # Link .vimrc
-ln -s -f ${script_dir}/vimrc.vim ${HOME}/.vimrc
+ln -s -f ${vim_script_dir}/vimrc.vim ${HOME}/.vimrc
 [ $? -ne 0 ] && die_with_error "Failed to install vim configs on system" 
 
-# Link autoload
-link_folders=(autoload plugin_configs)
-for link_folder in ${link_folders[*]}; do
-    ln -s -F -f ${script_dir}/${link_folder} ${HOME}/.vim
-    [ $? -ne 0 ] && die_with_error "Could not install .vim/${link_folder} on system"
+
+# Link files
+link_files=(plugin.vim)
+for link_file in ${link_files[*]}; do
+    ln -s -f ${vim_script_dir}/${link_file} ${HOME}/.vim/${link_file}
+    [ $? -ne 0 ] && die_with_error "Could not install .vim/${link_file} from ${vim_script_dir}/${link_file} on system"
 done
 
+# Link directories
+link_folders=(autoload plugin_configs)
+for link_folder in ${link_folders[*]}; do
+    ln -s -F -f ${vim_config_dir}/${link_folder} ${HOME}/.vim
+    [ $? -ne 0 ] && die_with_error "Could not install .vim/${link_folder} from ${vim_con}/${link_folder} on system"
+done
 
 # Link COC settings
-ln -s -f ${script_dir}/coc/coc-settings.json ${vim_dir}/coc-settings.json
+ln -s -f ${vim_config_dir}/coc/coc-settings.json ${vim_dir}/coc-settings.json
 [ $? -ne 0 ] && die_with_error "Failed to links coc_settings.json"
+
+
 
 # Install all plugins via Plug
 vim +PlugInstall +qall
-
 
 # Install COC language servers
 ./coc/install_servers.sh
