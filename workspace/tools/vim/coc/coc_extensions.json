@@ -1,0 +1,29 @@
+{
+    "extensions": [ 
+        {
+            "name": "coc-json",
+            "description": "Extension for menaging json files"
+        },
+        {
+            "name": "coc-sh",
+            "description": "Extension for shell (bash,zsh) files"
+        },
+        {
+            "name": "coc-cmake",
+            "description": "Extension for cmake (CMakeLists.txt) files"
+        },
+        {
+            "name": "coc-vimlsp",
+            "description": "Extension for vimscript language server"
+        },
+        {
+            "name": "coc-perl",
+            "description": "Extension for perl language files"
+        },
+        { 
+            "name": "coc-pyright",
+            "description": "Extension for python files",
+            "code": "https://github.com/fannheyward/coc-pyright"
+        }
+    ]
+}

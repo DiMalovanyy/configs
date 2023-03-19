@@ -28,3 +28,4 @@
 " | `:Maps`                | Normal mode mappings                                                                  |
 " | `:Helptags`            | Help tags <sup id="a1">[1](#helptags)</sup>                                           |
 " | `:Filetypes`           | File types
+"

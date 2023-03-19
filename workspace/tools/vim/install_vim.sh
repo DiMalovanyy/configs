@@ -121,7 +121,7 @@ ln -s -f ${vim_config_dir}/coc/coc-settings.json ${vim_dir}/coc-settings.json
 vim +PlugInstall +qall
 
 # Install COC language servers
-./coc/install_servers.sh
+./coc/configure_coc.py
 [ $? -ne 0 ] && die_with_error "Failed to install coc language servers"
 log_info "COC Language servers successfully installed"
 
