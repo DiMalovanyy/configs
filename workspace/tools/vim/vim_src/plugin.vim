@@ -21,6 +21,10 @@ Plug 'antoinemadec/coc-fzf'
 
 " Color scheme
 Plug 'morhetz/gruvbox'
+
+" Syntax highlight
+Plug 'nathanalderson/yang.vim'
+Plug 'solarnz/thrift.vim'
 call plug#end()
 
 " Load all configuration files

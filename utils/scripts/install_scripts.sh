@@ -1,6 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 shopt -s extglob
+
 current_script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 scripts_dir=${HOME}/.scripts
 scripts_utils_dir=${scripts_dir}/utils

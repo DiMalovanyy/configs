@@ -9,12 +9,11 @@
         "ccls": {
             "command": "ccls",
             "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/", "debian/"],
             "initializationOptions": {
                 "cache": {
                     "directory": "/tmp/ccls"
-                },
-                "compilationDatabaseDirectory": "build"
+                }
             }
         },
         "cmake": {
@@ -32,6 +31,8 @@
 			"filetypes": ["dockerfile"],
 			"args": ["--stdio"]
 		}
-    }
+    },
+    "go.goplsPath": "/home/dmalovan/go/bin/gopls",
+    "python.pythonPath": "/usr/bin/python3"
 }
 
